@@ -27,6 +27,7 @@ namespace YeahGamza.Util
     
     public static void Question(List<QuestionItem> questions)
     {
+      Clear();
       WriteLine("\n무엇을 하시겠습니까?");
       
       for (int i = 0; i < questions.Count; i++)
@@ -79,6 +80,7 @@ namespace YeahGamza.Util
 
       WriteLine();
       questions[index - 1].KeydownHandler(key);
+      ReadKey();
       return true;
     }
   }

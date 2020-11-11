@@ -43,6 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\IEntity.cs" />
+    <Compile Include="Entity\EntityType.cs" />
+    <Compile Include="Entity\IDamagable.cs" />
+    <Compile Include="Entity\IFightable.cs" />
+    <Compile Include="Entity\IHostile.cs" />
+    <Compile Include="Entity\ILevelable.cs" />
+    <Compile Include="Entity\IPlayer.cs" />
+    <Compile Include="Entity\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ConsoleManager.cs" />
@@ -55,6 +63,8 @@
     <None Include="LICENSE" />
     <None Include="README.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="User\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

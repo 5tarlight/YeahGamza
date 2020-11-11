@@ -79,7 +79,7 @@ namespace YeahGamza.Util
       if (questions.Count < index) return false;
 
       WriteLine();
-      questions[index - 1].KeydownHandler(key);
+      questions[index - 1].KeydownHandler?.Invoke(key);
       ReadKey();
       return true;
     }

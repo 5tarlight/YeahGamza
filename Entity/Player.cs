@@ -2,8 +2,11 @@
 
 namespace YeahGamza.Entity
 {
+  [Serializable]
   class Player : IEntity, IDamagable, ILevelable, IFightable, IPlayer
   {
+    public string Name { get; set; }
+
     public int Level
     {
       get
@@ -30,8 +33,9 @@ namespace YeahGamza.Entity
         return 500 + eff * Level;
       }
     }
-    
+
     public double HP { get; set; }
+
     public double Def
     {
       get
@@ -40,7 +44,9 @@ namespace YeahGamza.Entity
         else return Level;
       }
     }
+
     public long Exp { get; set; }
+
     public double Offense
     {
       get

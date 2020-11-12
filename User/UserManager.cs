@@ -121,7 +121,7 @@ namespace YeahGamza.User
         back = ConsoleColor.DarkGreen;
       }
       else if (player.HP / player.MaxHP > 0.25)
-        back = ConsoleColor.DarkMagenta;
+        back = ConsoleColor.DarkYellow;
       else
         back = ConsoleColor.DarkRed;
 

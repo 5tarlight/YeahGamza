@@ -31,9 +31,24 @@ namespace YeahGamza
         {
           List<QuestionItem> questions = new List<QuestionItem>
           {
-            new QuestionItem("캐릭터 정보 보기", Unavailable),
-            new QuestionItem("인벤토리 열기", Unavailable),
-            new QuestionItem("게임 종료하기", Terminate)
+            new QuestionItem()
+            {
+              Question = "캐릭터 정보 보기",
+              KeydownHandler = Unavailable,
+              Description = "현제 캐릭터의 정보를 확인합니다."
+            },
+            new QuestionItem()
+            {
+              Question = "인벤토리 열기",
+              KeydownHandler = Unavailable,
+              Description = "현제 캐릭터의 인벤토리를 확인합니다."
+            },
+            new QuestionItem()
+            {
+              Question = "게임 종료하기",
+              KeydownHandler = Terminate,
+              Description = "현제 캐릭터의 정보를 확인합니다."
+            }
           };
 
           ConsoleManager.QuestionArrow(questions);

@@ -100,7 +100,10 @@ namespace YeahGamza.Util
             WriteColor(msg, ConsoleColor.White);
         }
 
+        WriteLine();
+        WriteLine(questions[index].Description);
         WriteLine("\n↑ ↓ Enter");
+        
         ConsoleKey key = ReadKey().Key;
 
         switch (key)

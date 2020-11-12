@@ -65,11 +65,21 @@ namespace YeahGamza.User
         ReadKey();
         List<QuestionItem> questions = new List<QuestionItem>()
         {
-          new QuestionItem("만든다.", CreateUser),
-          new QuestionItem("만들지 않는다.", null)
+          new QuestionItem()
+          {
+            Question = "만든다.",
+            KeydownHandler = CreateUser,
+            Description = "새로운 캐릭터를 생성합니다."
+          },
+          new QuestionItem()
+          {
+            Question = "만들지 않는다.",
+            KeydownHandler = null,
+            Description = "새로운 캐릭터를 만들지 않습니다."
+          }
         };
 
-        ConsoleManager.Question(questions);
+        ConsoleManager.QuestionArrow(questions);
         return created;
       }
       else

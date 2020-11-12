@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using YeahGamza.Entity;
+using YeahGamza.Inv;
 using YeahGamza.Util;
 using static System.Console;
 
@@ -91,19 +92,26 @@ namespace YeahGamza.User
 
     private static void CreateUser(ConsoleKey key)
     {
-      WriteLine("만들 플레이어의 이름을 입력해주세요.");
-      string name = ReadLine().Trim();
-
-      Player player = new Player()
+      while (true)
       {
-        Name = name
-      };
-      
-      player.HP = player.MaxHP;
+        WriteLine("만들 플레이어의 이름을 입력해주세요.");
+        string name = ReadLine().Trim();
 
-      created = true;
-      Program.player = player;
-      SaveProfile(player);
+        if (name == "" || name == null) continue;
+
+        Player player = new Player()
+        {
+          Name = name,
+          Inventory = new Inventory()
+        };
+
+        player.HP = player.MaxHP;
+
+        created = true;
+        Program.player = player;
+        SaveProfile(player);
+        break;
+      }
     }
 
     public static void PrintUserInfo(Player player)
@@ -129,6 +137,7 @@ namespace YeahGamza.User
       ConsoleManager.WriteColor($"체력 : {player.HP} / {player.MaxHP}", fore, back);
       WriteLine($"\t공격력 : {player.Offense}");
       WriteLine($"\t방어력 : {player.Def}");
+      WriteLine($"\t아이템 : {player.Inventory.Count}개");
       WriteLine("=========================");
     }
   }

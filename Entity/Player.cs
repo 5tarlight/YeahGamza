@@ -1,4 +1,5 @@
 ﻿using System;
+using YeahGamza.Inv;
 
 namespace YeahGamza.Entity
 {
@@ -55,5 +56,7 @@ namespace YeahGamza.Entity
         return eff * Level;
       }
     }
-  }
+
+    public Inventory Inventory { get; set; }
+  }  
 }

@@ -51,6 +51,12 @@
     <Compile Include="Entity\ILevelable.cs" />
     <Compile Include="Entity\IPlayer.cs" />
     <Compile Include="Entity\Player.cs" />
+    <Compile Include="Inv\Inventory.cs" />
+    <Compile Include="Inv\InventoryItem.cs" />
+    <Compile Include="Inv\Item\IItem.cs" />
+    <Compile Include="Inv\Item\IUsable.cs" />
+    <Compile Include="Inv\Item\TestItem.cs" />
+    <Compile Include="Inv\Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\UserManager.cs" />

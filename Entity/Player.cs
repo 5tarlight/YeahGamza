@@ -15,13 +15,13 @@ namespace YeahGamza.Entity
         int eff = 500;
         int lvl = 0;
 
-        for (int i = 2; ex < i; i += eff)
+        for (int i = 2; ex > i; i += eff)
         {
           ex -= i;
           lvl++;
         }
 
-        return lvl;
+        return lvl + 1;
       }
     }
 
@@ -45,7 +45,7 @@ namespace YeahGamza.Entity
       }
     }
 
-    public long Exp { get; set; }
+    public long Exp { get; set; } = 0;
 
     public double Offense
     {

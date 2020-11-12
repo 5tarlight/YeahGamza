@@ -34,7 +34,10 @@ namespace YeahGamza
             new QuestionItem()
             {
               Question = "캐릭터 정보 보기",
-              KeydownHandler = Unavailable,
+              KeydownHandler = key =>
+              {
+                UserManager.PrintUserInfo(player);
+              },
               Description = "현제 캐릭터의 정보를 확인합니다."
             },
             new QuestionItem()

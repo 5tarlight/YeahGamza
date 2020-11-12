@@ -1,10 +1,10 @@
 ﻿using System;
-using System.IO;
-using YeahGamza.Entity;
-using System.Runtime.Serialization.Formatters.Binary;
-using static System.Console;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using YeahGamza.Entity;
 using YeahGamza.Util;
+using static System.Console;
 
 namespace YeahGamza.User
 {
@@ -94,8 +94,42 @@ namespace YeahGamza.User
       WriteLine("만들 플레이어의 이름을 입력해주세요.");
       string name = ReadLine().Trim();
 
-      SaveProfile(new Player() { Name = name });
+      Player player = new Player()
+      {
+        Name = name
+      };
+      
+      player.HP = player.MaxHP;
+
       created = true;
+      Program.player = player;
+      SaveProfile(player);
+    }
+
+    public static void PrintUserInfo(Player player)
+    {
+      Clear();
+      WriteLine("=========================");
+      WriteLine($"이름 : {player.Name}");
+      WriteLine($"레벨 : {player.Level}");
+
+      ConsoleColor back, fore = ConsoleColor.White;
+
+      if (player.HP / player.MaxHP > 0.5)
+      {
+        fore = ConsoleColor.Black;
+        back = ConsoleColor.DarkGreen;
+      }
+      else if (player.HP / player.MaxHP > 0.25)
+        back = ConsoleColor.DarkMagenta;
+      else
+        back = ConsoleColor.DarkRed;
+
+      Write("\t");
+      ConsoleManager.WriteColor($"체력 : {player.HP} / {player.MaxHP}", fore, back);
+      WriteLine($"\t공격력 : {player.Offense}");
+      WriteLine($"\t방어력 : {player.Def}");
+      WriteLine("=========================");
     }
   }
 }

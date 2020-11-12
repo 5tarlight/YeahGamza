@@ -85,8 +85,9 @@ namespace YeahGamza.Util
     public static void QuestionArrow(List<QuestionItem> questions)
     {
       int index = 0;
+      bool executed = false;
 
-      while (true)
+      while (!executed)
       {
         Clear();
 
@@ -116,6 +117,7 @@ namespace YeahGamza.Util
             break;
           case ConsoleKey.Enter:
             Execute(questions, index + 1, key);
+            executed = true;
             break;
           default: break;
         }

@@ -24,6 +24,14 @@ namespace YeahGamza.Util
       WriteLine(msg);
       ResetColor();
     }
+
+    public static void WriteColor(string msg, ConsoleColor fore, ConsoleColor back)
+    {
+      ForegroundColor = fore;
+      BackgroundColor = back;
+      WriteLine(msg);
+      ResetColor();
+    }
     
     public static void Question(List<QuestionItem> questions)
     {
@@ -71,6 +79,43 @@ namespace YeahGamza.Util
           break;
         default:
           break;
+      }
+    }
+
+    public static void QuestionArrow(List<QuestionItem> questions)
+    {
+      int index = 0;
+
+      while (true)
+      {
+        Clear();
+
+        for (int i = 0; i < questions.Count; i++)
+        {
+          string msg = $"{i + 1}. {questions[i].Question}";
+
+          if (i == index)
+            WriteColor(msg, ConsoleColor.Black, ConsoleColor.White);
+          else
+            WriteColor(msg, ConsoleColor.White);
+        }
+
+        WriteLine("\n↑ ↓ Enter");
+        ConsoleKey key = ReadKey().Key;
+
+        switch (key)
+        {
+          case ConsoleKey.UpArrow:
+            if (index != 0) index--;
+            break;
+          case ConsoleKey.DownArrow:
+            if (index != questions.Count - 1) index++;
+            break;
+          case ConsoleKey.Enter:
+            Execute(questions, index + 1, key);
+            break;
+          default: break;
+        }
       }
     }
 

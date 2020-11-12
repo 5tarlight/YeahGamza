@@ -54,6 +54,8 @@ namespace YeahGamza.User
       WriteLine("불러올 플레이어의 이름을 입력해주세요");
       string name = ReadLine().Trim();
 
+      if (name == "" || name == null) return false;
+
       WriteLine("데이터를 불러오는 중입니다...");
       Player player = LoadProfile(name);
 

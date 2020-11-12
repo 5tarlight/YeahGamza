@@ -36,7 +36,7 @@ namespace YeahGamza
             new QuestionItem("게임 종료하기", Terminate)
           };
 
-          ConsoleManager.Question(questions);
+          ConsoleManager.QuestionArrow(questions);
         }
         else
         {

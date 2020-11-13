@@ -124,6 +124,70 @@ namespace YeahGamza.Util
       }
     }
 
+    public static void QuestionArrowPage(List<QuestionItem> questions, int row)
+    {
+      int page = 0;
+      int index = 0;
+
+      while (true)
+      {
+        Clear();
+        List<QuestionItem> q;
+
+        if (questions.Count - 1 >= page * row + row)
+          q = questions.GetRange(page * row, row);
+        else
+          q = questions.GetRange(page * row, questions.Count - page * row);
+
+
+
+        for (int i = 0; i < q.Count; i++)
+        {
+          string msg = $"{page * row + i + 1}. {q[i].Question}";
+
+          if (i == index)
+            WriteColor(msg, ConsoleColor.Black, ConsoleColor.White);
+          else
+            WriteColor(msg, ConsoleColor.White);
+        }
+
+        WriteLine();
+        WriteLine(questions[index].Description);
+        WriteLine($"\n페이지: {page}, 개수 : {page * row + index + 1}/{questions.Count}");
+        WriteLine("↑ ↓ ← → Enter");
+
+        ConsoleKey key = ReadKey().Key;
+
+        switch (key)
+        {
+          case ConsoleKey.UpArrow:
+            if (index != 0) index--;
+            break;
+          case ConsoleKey.DownArrow:
+            if (index !=  q.Count - 1) index++;
+            break;
+          case ConsoleKey.LeftArrow:
+            if (page != 0)
+            {
+              page--;
+              index = 0;
+            }
+            break;
+          case ConsoleKey.RightArrow:
+            if (page != Math.Ceiling(((double)questions.Count / row)) -1 )
+            {
+              page++;
+              index = 0;
+            }
+            break;
+          case ConsoleKey.Enter:
+            Execute(questions, page * row + index + 1, key);
+            return;
+          default: break;
+        }
+      }
+    }
+
     private static bool Execute(List<QuestionItem> questions, int index, ConsoleKey key)
     {
       if (questions.Count < index) return false;

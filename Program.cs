@@ -43,7 +43,7 @@ namespace YeahGamza
             new QuestionItem()
             {
               Question = "인벤토리 열기",
-              KeydownHandler = Unavailable,
+              KeydownHandler = key => UserManager.ViewInventory(player),
               Description = "현제 캐릭터의 인벤토리를 확인합니다."
             },
             new QuestionItem()

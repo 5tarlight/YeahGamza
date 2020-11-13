@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using YeahGamza.Entity;
 using YeahGamza.Inv;
 using YeahGamza.Util;
+using YeahGamza.Inv.Item;
 using static System.Console;
 
 namespace YeahGamza.User
@@ -106,6 +107,28 @@ namespace YeahGamza.User
         };
 
         player.HP = player.MaxHP;
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new TestItem());
 
         created = true;
         Program.player = player;
@@ -139,6 +162,23 @@ namespace YeahGamza.User
       WriteLine($"\t방어력 : {player.Def}");
       WriteLine($"\t아이템 : {player.Inventory.Count}개");
       WriteLine("=========================");
+    }
+
+    public static void ViewInventory(Player player)
+    {
+      List<QuestionItem> questions = new List<QuestionItem>();
+      Inventory inv = player.Inventory;
+
+      foreach (IItem item in inv.items)
+      {
+        questions.Add(new QuestionItem()
+        {
+          Question = item.Name,
+          Description = item.Description
+        });
+      }
+
+      ConsoleManager.QuestionArrowPage(questions, 10);
     }
   }
 }

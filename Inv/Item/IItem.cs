@@ -2,8 +2,9 @@
 {
   interface IItem
   {
-    string Name { get; set; }
+    string Name { get; }
     int Count { get; set; }
     int CodeData { get; set; }
+    string Description { get; }
   }
 }

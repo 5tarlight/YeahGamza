@@ -152,8 +152,8 @@ namespace YeahGamza.Util
         }
 
         WriteLine();
-        WriteLine(questions[index].Description);
-        WriteLine($"\n페이지: {page}, 개수 : {page * row + index + 1}/{questions.Count}");
+        WriteLine(questions[page * row + index].Description);
+        WriteLine($"\n페이지: {page + 1}, 개수 : {page * row + index + 1}/{questions.Count}");
         WriteLine("↑ ↓ ← → Enter");
 
         ConsoleKey key = ReadKey().Key;

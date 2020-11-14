@@ -1,7 +1,9 @@
-﻿namespace YeahGamza.Inv.Item
+﻿using System;
+
+namespace YeahGamza.Inv.Item
 {
   interface IUsable
   {
-    void Use();
+    void Use(ConsoleKey key);
   }
 }

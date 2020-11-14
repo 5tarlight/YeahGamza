@@ -4,8 +4,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using YeahGamza.Entity;
 using YeahGamza.Inv;
-using YeahGamza.Util;
 using YeahGamza.Inv.Item;
+using YeahGamza.Util;
 using static System.Console;
 
 namespace YeahGamza.User
@@ -109,26 +109,7 @@ namespace YeahGamza.User
         player.HP = player.MaxHP;
         player.Inventory.Add(new TestItem());
         player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
-        player.Inventory.Add(new TestItem());
+        player.Inventory.Add(new UsableTestItem());
 
         created = true;
         Program.player = player;
@@ -171,11 +152,15 @@ namespace YeahGamza.User
 
       foreach (IItem item in inv.items)
       {
-        questions.Add(new QuestionItem()
+        QuestionItem qi = new QuestionItem()
         {
           Question = item.Name,
           Description = item.Description
-        });
+        };
+
+        if (item is IUsable) qi.KeydownHandler = ((IUsable)item).Use;
+
+        questions.Add(qi);
       }
 
       ConsoleManager.QuestionArrowPage(questions, 10);

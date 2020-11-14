@@ -56,6 +56,7 @@
     <Compile Include="Inv\Item\IItem.cs" />
     <Compile Include="Inv\Item\IUsable.cs" />
     <Compile Include="Inv\Item\TestItem.cs" />
+    <Compile Include="Inv\Item\UsableTestItem.cs" />
     <Compile Include="Inv\Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using YeahGamza.Inv.Item;
+using YeahGamza.User;
 
 namespace YeahGamza.Inv
 {
@@ -22,6 +23,18 @@ namespace YeahGamza.Inv
 
     public void Add(IItem item)
     {
+      if (items.Contains(item))
+      {
+        for (int i = 0; i < items.Count; i++)
+        {
+          if (items[i] == item)
+          {
+            items[i].Count++;
+            UserManager.SaveProfile(Program.player);
+          }
+        }
+      }
+
       items.Add(item);
     }
 

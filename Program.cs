@@ -23,6 +23,7 @@ namespace YeahGamza
 
     static void Main(string[] args)
     {
+      AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
       ConsoleManager.PrintLogo();
 
       while (true)
@@ -61,6 +62,11 @@ namespace YeahGamza
           login = UserManager.GetPlayer();
         }
       }
+    }
+
+    static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+    {
+      UserManager.SaveProfile(player);
     }
   }
 }
